@@ -1,0 +1,6 @@
+path: /Users/mouyuanyap/Documents/vscode/train_tag_yolo/
+train: /Users/mouyuanyap/Documents/vscode/train_tag_yolo/images/train/  
+val: /Users/mouyuanyap/Documents/vscode/train_tag_yolo/images/val/  
+
+names:
+  0: tag
