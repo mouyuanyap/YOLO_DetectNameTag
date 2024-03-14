@@ -7,9 +7,10 @@ model = ultralytics.YOLO('yolov8n.pt')
 model_NameTag = ultralytics.YOLO('./train_tag_yolo/runs/detect/train4/weights/best.pt')
 
 person_detect_conf = 0.5
-nameTag_detect_conf = 0.2
+nameTag_detect_conf = 0.35
 
-def processResult(image,model, model_NameTag,resultsPerson, flip = False):
+def processResult(image,model, model_NameTag,resultsPerson, count, flip = False):
+    result_path = "./result/"
     if flip:
         frame1 = image 
         image = cv2.rotate(image, cv2.ROTATE_180)
@@ -48,8 +49,8 @@ def processResult(image,model, model_NameTag,resultsPerson, flip = False):
                         cv2.putText(frame1, 'x:{}, y:{}'.format(x1,y1), (x1, y2 + 30), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0), 2)
                     else:
                         cv2.putText(frame1, 'x:{}, y:{}'.format(x1,y1), (x1, y1-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0), 2)
-
-    
+                    cv2.imwrite(result_path + "frame{}".format(count) + "_({0},{1})_".format(x1,y1,)+"%.2f.png"%float(result_nameTag[0].boxes.conf[i].item()), frame1)
+                    
     return frame1
 
 
@@ -72,14 +73,14 @@ def video_frame_generator(video_name = "./sample.mp4"):
         # model = ultralytics.YOLO('yolov8n.pt')
         resultsPerson = model.predict(source= image, save=True, name = "test_{}".format(class_name), exist_ok=True)
         
-        image = processResult(image, model, model_NameTag,resultsPerson)
+        image = processResult(image, model, model_NameTag,resultsPerson,count)
         rotated_image = cv2.rotate(ori_image, cv2.ROTATE_180)
         resultsPerson = model.predict(source= rotated_image, save=True, name = "test_{}_rotated".format(class_name), exist_ok=True)
-        image = processResult(image, model, model_NameTag,resultsPerson, True)
+        image = processResult(image, model, model_NameTag,resultsPerson, count, True)
         # image = Image.open("./runs/detect/test_person/image0.jpg")
         
         cv2.putText(image, '{}'.format(count), (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0,255,0), 2)
-        
+
         color_coverted = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
         # image = Image.fromarray(image)
         image = Image.fromarray(color_coverted) 
