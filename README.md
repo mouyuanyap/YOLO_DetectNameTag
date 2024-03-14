@@ -21,14 +21,16 @@ This project implements real-time object detection using a two-stage approach wi
 
 ## 3. Usage
 ### CLI command to detect video frames and output realtime result on GUI
-`python demo_gui.py "./sample.mp4"`
+```
+python demo_gui.py "./sample.mp4"
+```
 
 ###
 
 ## 4. Object Detection Pipeline
 ### Use Pretrained YOLOv8 model to detect person object in video frames.
 Detect and crop out person objects for further annotation and finetuning.
-https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/fd9148736d00c645373aec2ba8d944f82e770d32/processFrame.py#L71
+https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/c5fbe6605f3cfbf84afe72a865800be84fdfe5bb/processFrame.py#L72-L74
 
 ### Annotate name tag label using labelImg
 ![Screenshot of annotating using labelImg](https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/9cb9ab9f044e9db2ace3408183ee8cfb1e441fa3/docs/Screenshot-labelImg.png)
