@@ -27,23 +27,30 @@ This project implements real-time object detection using a two-stage approach wi
 
 ## 4. Object Detection Pipeline
 ### Use Pretrained YOLOv8 model to detect person object in video frames.
+Detect and crop out person objects for further annotation and finetuning.
 https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/fd9148736d00c645373aec2ba8d944f82e770d32/processFrame.py#L71
 
 ### Annotate name tag label using labelImg
-(screenshot)
+![Screenshot of annotating using labelImg](https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/9cb9ab9f044e9db2ace3408183ee8cfb1e441fa3/docs/Screenshot-labelImg.png)
 
 ### Finetune YOLOv8 model with custom dataset
-(code)
-Train dataset: 41, Validation dataset: 13, with data augmentation
-50 epochs 
+Train dataset: 41, Validation dataset: 13, with data augmentation; 50 epochs 
+https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/12f1679f8f0f2802a9f4d7bd60770964989e1863/train_tag_yolo/train.py#L1-L5
 ![Finetune training result](https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/fd9148736d00c645373aec2ba8d944f82e770d32/train_tag_yolo/runs/detect/train4/results.png)
 
 ### Two-stage Detection 
 1. Detect all person objects in the frame
 2. Detect whether name tag object is in each cropped person objects
 
-#### Tricks
-Pretrained YOLOv8 model only can detect person in upright position. Hence, rotate the frame clockwise 180 degree and do the above two-stage detection for each frame.
+<img align="center" width="75%" src="https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/12f1679f8f0f2802a9f4d7bd60770964989e1863/docs/GUI-detection-video.gif">
+
+> [!TIP]
+> Pretrained YOLOv8 model only can detect person in upright position.
+> Hence, rotate the frame clockwise 180 degree and do the above two-stage detection for each frame.
+
+<img src="https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/12f1679f8f0f2802a9f4d7bd60770964989e1863/docs/Screenshot-YOLO-inference-norotate.jpg" width="48%" > <img src="https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/12f1679f8f0f2802a9f4d7bd60770964989e1863/docs/Screenshot-YOLO-inference-rotate.jpg" width="48%" >
+
+
 
 ## 5. Version History
 - **v1.0.0 (2024-03-14)**: Initial release.
