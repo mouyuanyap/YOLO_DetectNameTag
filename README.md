@@ -24,7 +24,7 @@ This project implements real-time object detection using a two-stage approach wi
 ```
 python demo_gui.py "./sample.mp4"
 ```
-
+Frame with name tag detected is saved in result/frameXX_(x,y)_conf.png
 ###
 
 ## 4. Object Detection Pipeline
