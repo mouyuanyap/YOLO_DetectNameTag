@@ -1,7 +1,7 @@
 
 import tkinter as tk
 from processFrame import video_frame_generator
-
+import sys
 # model = ultralytics.YOLO('yolov8n.pt')
 # model.to('cuda')
 # model_NameTag = ultralytics.YOLO('C:\\Users\\User\\Desktop\\pythonCode\\YOLO_DetectNameTag\\train_tag_yolo\\runs\\detect\\train4\\weights\\best.pt')
@@ -26,12 +26,17 @@ def _replay():
     movie_frame = video_frame_generator()
     pause_video = False
 
-video_name = "./sample.mp4"
+
 
 if __name__ == "__main__":
-
+    try:
+        video_name = sys.argv[1]
+    except:
+        video_name = "./sample.mp4"
     root = tk.Tk()
     root.title('Name Tag Detector')
+
+
 
     my_label = tk.Label(root)
     my_label.pack()
