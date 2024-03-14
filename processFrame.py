@@ -4,7 +4,7 @@ from pprint import pprint
 from PIL import Image, ImageTk
 
 model = ultralytics.YOLO('yolov8n.pt')
-model_NameTag = ultralytics.YOLO('C:\\Users\\User\\Desktop\\pythonCode\\YOLO_DetectNameTag\\train_tag_yolo\\runs\\detect\\train4\\weights\\best.pt')
+model_NameTag = ultralytics.YOLO('./train_tag_yolo/runs/detect/train4/weights/best.pt')
 
 person_detect_conf = 0.5
 nameTag_detect_conf = 0.2
@@ -68,7 +68,10 @@ def video_frame_generator(video_name = "./sample.mp4"):
         class_name = 'person'
         
         ori_image = image
+        
+        # model = ultralytics.YOLO('yolov8n.pt')
         resultsPerson = model.predict(source= image, save=True, name = "test_{}".format(class_name), exist_ok=True)
+        
         image = processResult(image, model, model_NameTag,resultsPerson)
         rotated_image = cv2.rotate(ori_image, cv2.ROTATE_180)
         resultsPerson = model.predict(source= rotated_image, save=True, name = "test_{}_rotated".format(class_name), exist_ok=True)
