@@ -45,7 +45,7 @@ https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/12f1679f8f0f2802a9f4d7bd60
 1. Detect all person objects in the frame
 2. Detect whether name tag object is in each cropped person objects
 
-<img align="center" width="75%" src="https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/12f1679f8f0f2802a9f4d7bd60770964989e1863/docs/GUI-detection-video.gif">
+<img align="center" width="75%" src="https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/12f1679f8f0f2802a9f4d7bd60770964989e1863/docs/GUI-detection-video.gif"> <img align="center" width="10%" src="https://github.com/mouyuanyap/YOLO_DetectNameTag/blob/9625977f7dc33458db33a2c81dbb790370b01473/train_tag_yolo/runs/detect/test/labels720.jpg">
 
 > [!TIP]
 > Pretrained YOLOv8 model only can detect person in upright position.
